@@ -3,7 +3,7 @@
     "description": "Google Drive REST API Wrapper For Laravel and Lumen",
     "type": "library",
     "require": {
-        "illuminate/support": "^6.0@dev",
+        "illuminate/support": ">=6.0",
         "php": "^7.2",
 		"guzzlehttp/guzzle": "^6.3.1|^7.0.1",
 		"google/apiclient": "^2.8"
