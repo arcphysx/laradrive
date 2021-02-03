@@ -43,14 +43,16 @@ class Permissions implements HttpClientModuleContract
         return ResponseWrapper::parse($response);
     }
 
-    public function create($fileOrFolderId, $role, $type)
+    public function create($fileOrFolderId, $role, $type, $additional=null)
     {
         // https://developers.google.com/drive/api/v3/reference/permissions/create
+        $params = [
+            'role' => $role,
+            'type' => $type,
+        ];
+        if(isset($params)) array_merge($params, $additional);
         $response = Laradrive::httpClient()->post("files/$fileOrFolderId/permissions", [
-            'json' => [
-                'role' => $role,
-                'type' => $type,
-            ]
+            'json' => $params
         ]);
 
         return ResponseWrapper::parse($response);
