@@ -50,7 +50,7 @@ class Permissions implements HttpClientModuleContract
             'role' => $role,
             'type' => $type,
         ];
-        if(isset($additional)) $params = array_merge($params, $additional);
+        if($additional !== null && is_array($additional)) $params = array_merge($params, $additional);
         $response = Laradrive::httpClient()->post("files/$fileOrFolderId/permissions", [
             'json' => $params
         ]);
