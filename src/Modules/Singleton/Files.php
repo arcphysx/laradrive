@@ -118,13 +118,7 @@ class Files implements HttpClientModuleContract
             $body["json"]["name"] = $name;
         }
         
-        $response = Laradrive::httpClient()->post("files/$fileId/copy", [
-            'json' => [
-                'parents' => [
-                    $destinationId
-                ]
-            ],
-        ]);
+        $response = Laradrive::httpClient()->post("files/$fileId/copy", $body);
 
         return ResponseWrapper::parse($response);
     }
