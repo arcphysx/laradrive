@@ -122,4 +122,17 @@ class Files implements HttpClientModuleContract
 
         return ResponseWrapper::parse($response);
     }
+    
+    public function rename($fileId, $name)
+    {
+        $body = [
+            'json' => [
+                'name' => $name,
+            ],
+        ];
+
+        $response = Laradrive::httpClient()->patch("files/$fileId", $body);
+
+        return ResponseWrapper::parse($response);
+    }
 }
